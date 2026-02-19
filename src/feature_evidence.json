@@ -1,0 +1,193 @@
+{
+  "kind": "feature_evidence_report",
+  "features": [
+    {
+      "featureId": "feature-create-a-conversation-input-interface-where-users-can-manually-add-messages-by-entering-sender-name-message-text-and-timestamp-allow-users-to-create-multiple-conversations-and-switch-between-them",
+      "featureTitle": "Create a conversation input interface where users can manually add messages by entering sender name, message text, and timestamp. Allow users to create multiple conversations and switch between them.",
+      "files": [
+        "frontend/src/components/ConversationList.tsx",
+        "frontend/src/components/MessageInput.tsx",
+        "frontend/src/pages/ConversationManager.tsx"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0",
+        "authorization@4.0.0"
+      ],
+      "testIds": [
+        "REQ-4"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-display-conversation-messages-chronologically-with-timestamps-in-a-chat-like-interface-showing-sender-names-and-message-bubbles-for-each-entry",
+      "featureTitle": "Display conversation messages chronologically with timestamps in a chat-like interface, showing sender names and message bubbles for each entry.",
+      "files": [
+        "frontend/src/components/MessageBubble.tsx",
+        "frontend/src/components/MessageList.tsx",
+        "frontend/src/pages/ConversationManager.tsx"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0",
+        "authorization@4.0.0"
+      ],
+      "testIds": [
+        "REQ-5"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-implement-pdf-export-functionality-that-generates-a-well-formatted-pdf-document-with-chat-style-layout-including-conversation-title-date-range-and-all-messages-with-timestamps",
+      "featureTitle": "Implement PDF export functionality that generates a well-formatted PDF document with chat-style layout, including conversation title, date range, and all messages with timestamps.",
+      "files": [
+        "frontend/src/components/ExportButton.tsx",
+        "frontend/src/pages/ConversationManager.tsx",
+        "frontend/src/utils/pdfGenerator.ts"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0",
+        "authorization@4.0.0"
+      ],
+      "testIds": [
+        "REQ-6"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-add-a-search-feature-that-allows-users-to-filter-messages-within-a-conversation-by-text-content-returning-matching-messages-highlighted-in-the-view",
+      "featureTitle": "Add a search feature that allows users to filter messages within a conversation by text content, returning matching messages highlighted in the view.",
+      "files": [
+        "frontend/src/components/MessageBubble.tsx",
+        "frontend/src/components/MessageSearch.tsx",
+        "frontend/src/pages/ConversationManager.tsx"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0",
+        "authorization@4.0.0"
+      ],
+      "testIds": [
+        "REQ-7"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-implement-date-range-selection-for-pdf-export-allowing-users-to-choose-start-and-end-dates-to-export-only-messages-within-that-range",
+      "featureTitle": "Implement date range selection for PDF export, allowing users to choose start and end dates to export only messages within that range.",
+      "files": [
+        "frontend/src/components/ExportButton.tsx",
+        "frontend/src/utils/pdfGenerator.ts"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0",
+        "authorization@4.0.0"
+      ],
+      "testIds": [
+        "REQ-8"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-enable-exporting-multiple-conversations-into-a-single-pdf-document-with-each-conversation-clearly-separated-and-labeled",
+      "featureTitle": "Enable exporting multiple conversations into a single PDF document, with each conversation clearly separated and labeled.",
+      "files": [
+        "frontend/src/components/MultiConversationExport.tsx",
+        "frontend/src/pages/ConversationManager.tsx",
+        "frontend/src/utils/pdfGenerator.ts"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0",
+        "authorization@4.0.0"
+      ],
+      "testIds": [
+        "REQ-9"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-implement-dark-mode-support-with-a-toggle-switch-applying-the-dark-theme-consistently-across-all-pages-and-components-using-the-existing-oklch-color-system",
+      "featureTitle": "Implement dark mode support with a toggle switch, applying the dark theme consistently across all pages and components using the existing OKLCH color system.",
+      "files": [
+        "frontend/src/App.tsx",
+        "frontend/src/components/Header.tsx",
+        "frontend/src/components/ThemeToggle.tsx"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0",
+        "authorization@4.0.0"
+      ],
+      "testIds": [
+        "REQ-10"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-add-pin-lock-functionality-requiring-users-to-set-and-enter-a-4-6-digit-pin-to-access-the-app-with-the-pin-stored-securely-in-the-backend",
+      "featureTitle": "Add PIN lock functionality requiring users to set and enter a 4-6 digit PIN to access the app, with the PIN stored securely in the backend.",
+      "files": [
+        "frontend/src/App.tsx",
+        "frontend/src/components/PinEntry.tsx",
+        "frontend/src/components/PinSetup.tsx"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0",
+        "authorization@4.0.0"
+      ],
+      "testIds": [
+        "REQ-11"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-remove-or-replace-the-existing-platformlimitations-and-webalternatives-informational-sections-with-the-actual-sansi-app-collector-functionality-maintaining-only-the-header-footer-and-minimalist-design-theme",
+      "featureTitle": "Remove or replace the existing PlatformLimitations and WebAlternatives informational sections with the actual Sansi App Collector functionality, maintaining only the header, footer, and minimalist design theme.",
+      "files": [
+        "frontend/src/App.tsx",
+        "frontend/src/components/PlatformLimitations.tsx",
+        "frontend/src/components/WebAlternatives.tsx"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0",
+        "authorization@4.0.0"
+      ],
+      "testIds": [
+        "REQ-12"
+      ],
+      "confidence": "high"
+    }
+  ]
+}

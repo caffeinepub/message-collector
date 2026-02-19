@@ -1,0 +1,209 @@
+{
+  "kind": "build_request",
+  "title": "Build Sansi App Collector - Message Collection and PDF Export Web App",
+  "projectName": "Sansi App Collector",
+  "priority": "normal",
+  "requirements": [
+    {
+      "id": "REQ-4",
+      "text": "Create a conversation input interface where users can manually add messages by entering sender name, message text, and timestamp. Allow users to create multiple conversations and switch between them.",
+      "target": "both",
+      "source": {
+        "messageIds": [
+          "msg-recent"
+        ],
+        "quotes": [
+          "manually paste or type messages",
+          "create a responsive web app"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Users can create new conversations with a conversation name",
+        "Users can add individual messages to a conversation with sender, text, and timestamp fields",
+        "Users can view a list of all saved conversations",
+        "Users can switch between different conversations to view or edit them",
+        "All conversation data persists in the backend"
+      ]
+    },
+    {
+      "id": "REQ-5",
+      "text": "Display conversation messages chronologically with timestamps in a chat-like interface, showing sender names and message bubbles for each entry.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-recent"
+        ],
+        "quotes": [
+          "Display conversation messages chronologically with timestamps"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Messages appear in chronological order (oldest to newest)",
+        "Each message shows sender name, message text, and timestamp",
+        "Messages are styled in a chat bubble layout similar to messaging apps",
+        "The conversation view scrolls smoothly with proper spacing"
+      ]
+    },
+    {
+      "id": "REQ-6",
+      "text": "Implement PDF export functionality that generates a well-formatted PDF document with chat-style layout, including conversation title, date range, and all messages with timestamps.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-recent"
+        ],
+        "quotes": [
+          "Export conversation to well-formatted PDF with chat layout"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Users can trigger PDF export with a dedicated button",
+        "Generated PDF includes conversation name as title",
+        "PDF shows date range of the conversation",
+        "Messages in PDF maintain chronological order with sender names and timestamps",
+        "PDF layout resembles a chat interface with proper formatting",
+        "PDF can be downloaded to the user's device"
+      ]
+    },
+    {
+      "id": "REQ-7",
+      "text": "Add a search feature that allows users to filter messages within a conversation by text content, returning matching messages highlighted in the view.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-recent"
+        ],
+        "quotes": [
+          "Search conversation feature"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Search input field is prominently displayed above the message list",
+        "Search filters messages in real-time as user types",
+        "Matching text is highlighted in the message bubbles",
+        "Search is case-insensitive",
+        "Clear button resets the search filter"
+      ]
+    },
+    {
+      "id": "REQ-8",
+      "text": "Implement date range selection for PDF export, allowing users to choose start and end dates to export only messages within that range.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-recent"
+        ],
+        "quotes": [
+          "Select date range before exporting"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Date range picker appears when user initiates PDF export",
+        "Users can select both start date and end date",
+        "Only messages within the selected range are included in the PDF",
+        "Date range is displayed in the exported PDF header",
+        "Default range includes all messages if no selection is made"
+      ]
+    },
+    {
+      "id": "REQ-9",
+      "text": "Enable exporting multiple conversations into a single PDF document, with each conversation clearly separated and labeled.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-recent"
+        ],
+        "quotes": [
+          "Export multiple conversations into one PDF"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Users can select multiple conversations from a checklist",
+        "Export button generates a single PDF containing all selected conversations",
+        "Each conversation section in the PDF starts with its name as a heading",
+        "Conversations are separated by clear visual dividers",
+        "PDF includes a table of contents or index of included conversations"
+      ]
+    },
+    {
+      "id": "REQ-10",
+      "text": "Implement dark mode support with a toggle switch, applying the dark theme consistently across all pages and components using the existing OKLCH color system.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-recent"
+        ],
+        "quotes": [
+          "Dark mode support"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Dark mode toggle is accessible in the app header or settings",
+        "Toggle switches between light and dark themes instantly",
+        "Dark theme uses existing dark theme CSS variables from index.css",
+        "User's theme preference persists across sessions",
+        "All UI components and text remain readable in dark mode"
+      ]
+    },
+    {
+      "id": "REQ-11",
+      "text": "Add PIN lock functionality requiring users to set and enter a 4-6 digit PIN to access the app, with the PIN stored securely in the backend.",
+      "target": "both",
+      "source": {
+        "messageIds": [
+          "msg-recent"
+        ],
+        "quotes": [
+          "PIN lock for privacy"
+        ]
+      },
+      "acceptanceCriteria": [
+        "First-time users are prompted to create a PIN on initial access",
+        "Returning users must enter their PIN to unlock the app",
+        "PIN entry screen appears before main app content",
+        "PIN is stored securely in the backend (hashed)",
+        "Failed PIN attempts show error feedback",
+        "Option to reset PIN is available through Internet Identity authentication"
+      ]
+    },
+    {
+      "id": "REQ-12",
+      "text": "Remove or replace the existing PlatformLimitations and WebAlternatives informational sections with the actual Sansi App Collector functionality, maintaining only the header, footer, and minimalist design theme.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-recent"
+        ],
+        "quotes": [
+          "create a responsive web app name it sansi app collector"
+        ]
+      },
+      "acceptanceCriteria": [
+        "PlatformLimitations component is removed from the main App",
+        "WebAlternatives component is removed from the main App",
+        "Main app layout shows conversation management interface instead",
+        "Header and Footer components remain intact",
+        "Minimalist design with white background and coral accent color is preserved"
+      ]
+    }
+  ],
+  "constraints": [
+    "Maintain the existing minimalist design theme with white background, simple typography, and coral accent color",
+    "Preserve the Footer component with attribution link unchanged",
+    "Keep frontend/src/hooks/useInternetIdentity.ts and frontend/src/hooks/useActor.ts unchanged",
+    "All data must persist in the backend using Motoko",
+    "PDF generation must happen client-side in the frontend"
+  ],
+  "nonGoals": [
+    "Native Android app development",
+    "Actual SMS reading or device permissions",
+    "Real-time synchronization or WebSocket features",
+    "Email or SMS notification integration",
+    "Cloud storage integration (AWS, Google Drive, etc.)",
+    "Multi-user chat or collaboration features"
+  ],
+  "imageRequirements": {
+    "required": [],
+    "edits": []
+  }
+}

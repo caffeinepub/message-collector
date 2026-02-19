@@ -1,0 +1,168 @@
+{
+  "schemaVersion": "1.0.0",
+  "projectStateVersion": 5,
+  "summary": "Responsive web application called 'Sansi App Collector' for manually collecting and displaying message conversations with PDF export functionality, built as a web app for the Internet Computer blockchain",
+  "architectural_notes": [
+    "Offline-only architecture - no cloud/server integration",
+    "PDF generation library integration required",
+    "Performance optimization for large conversation datasets",
+    "Clean Material Design UI with white background default",
+    "Web application architecture for Internet Computer blockchain",
+    "Manual message input/paste functionality instead of SMS reading",
+    "Responsive design for mobile browser compatibility"
+  ],
+  "known_issues": [],
+  "isFixRequest": false,
+  "existing_features": [
+    {
+      "id": "feature-display-a-homepage-that-clearly-communicates-this-platform-cannot-build-native-android-mobile-applications-only-web-applications-for-the-internet-computer-blockchain-explain-that-the-requested-sms-reading-mobile-permissions-and-native-android-features-are-not-supported",
+      "title": "Display a homepage that clearly communicates this platform cannot build native Android mobile applications, only web applications for the Internet Computer blockchain. Explain that the requested SMS reading, mobile permissions, and native Android features are not supported.",
+      "reqIds": [
+        "REQ-1"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-create-an-informational-section-suggesting-web-based-alternatives-a-conversation-logger-where-users-manually-input-or-paste-messages-or-a-web-app-that-works-with-browser-accessible-data-instead-of-native-sms",
+      "title": "Create an informational section suggesting web-based alternatives: a conversation logger where users manually input or paste messages, or a web app that works with browser-accessible data instead of native SMS.",
+      "reqIds": [
+        "REQ-2"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-apply-a-clean-minimalist-design-theme-with-white-background-simple-typography-sans-serif-fonts-and-smooth-navigation-patterns-throughout-the-application-use-subtle-grays-and-a-single-accent-color-not-blue-or-purple-for-interactive-elements",
+      "title": "Apply a clean, minimalist design theme with white background, simple typography (sans-serif fonts), and smooth navigation patterns throughout the application. Use subtle grays and a single accent color (not blue or purple) for interactive elements.",
+      "reqIds": [
+        "REQ-3"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-create-a-conversation-input-interface-where-users-can-manually-add-messages-by-entering-sender-name-message-text-and-timestamp-allow-users-to-create-multiple-conversations-and-switch-between-them",
+      "title": "Create a conversation input interface where users can manually add messages by entering sender name, message text, and timestamp. Allow users to create multiple conversations and switch between them.",
+      "reqIds": [
+        "REQ-4"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-display-conversation-messages-chronologically-with-timestamps-in-a-chat-like-interface-showing-sender-names-and-message-bubbles-for-each-entry",
+      "title": "Display conversation messages chronologically with timestamps in a chat-like interface, showing sender names and message bubbles for each entry.",
+      "reqIds": [
+        "REQ-5"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-implement-pdf-export-functionality-that-generates-a-well-formatted-pdf-document-with-chat-style-layout-including-conversation-title-date-range-and-all-messages-with-timestamps",
+      "title": "Implement PDF export functionality that generates a well-formatted PDF document with chat-style layout, including conversation title, date range, and all messages with timestamps.",
+      "reqIds": [
+        "REQ-6"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-add-a-search-feature-that-allows-users-to-filter-messages-within-a-conversation-by-text-content-returning-matching-messages-highlighted-in-the-view",
+      "title": "Add a search feature that allows users to filter messages within a conversation by text content, returning matching messages highlighted in the view.",
+      "reqIds": [
+        "REQ-7"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-implement-date-range-selection-for-pdf-export-allowing-users-to-choose-start-and-end-dates-to-export-only-messages-within-that-range",
+      "title": "Implement date range selection for PDF export, allowing users to choose start and end dates to export only messages within that range.",
+      "reqIds": [
+        "REQ-8"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-enable-exporting-multiple-conversations-into-a-single-pdf-document-with-each-conversation-clearly-separated-and-labeled",
+      "title": "Enable exporting multiple conversations into a single PDF document, with each conversation clearly separated and labeled.",
+      "reqIds": [
+        "REQ-9"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-implement-dark-mode-support-with-a-toggle-switch-applying-the-dark-theme-consistently-across-all-pages-and-components-using-the-existing-oklch-color-system",
+      "title": "Implement dark mode support with a toggle switch, applying the dark theme consistently across all pages and components using the existing OKLCH color system.",
+      "reqIds": [
+        "REQ-10"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-add-pin-lock-functionality-requiring-users-to-set-and-enter-a-4-6-digit-pin-to-access-the-app-with-the-pin-stored-securely-in-the-backend",
+      "title": "Add PIN lock functionality requiring users to set and enter a 4-6 digit PIN to access the app, with the PIN stored securely in the backend.",
+      "reqIds": [
+        "REQ-11"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-remove-or-replace-the-existing-platformlimitations-and-webalternatives-informational-sections-with-the-actual-sansi-app-collector-functionality-maintaining-only-the-header-footer-and-minimalist-design-theme",
+      "title": "Remove or replace the existing PlatformLimitations and WebAlternatives informational sections with the actual Sansi App Collector functionality, maintaining only the header, footer, and minimalist design theme.",
+      "reqIds": [
+        "REQ-12"
+      ],
+      "version": 1
+    }
+  ],
+  "new_feature_requests": [
+    {
+      "id": "AR-2",
+      "summary": "Display conversation messages chronologically with timestamps",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-3",
+      "summary": "Export conversation to well-formatted PDF with chat layout",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-4",
+      "summary": "Save and share PDF functionality",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-5",
+      "summary": "Search conversation feature",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-6",
+      "summary": "Select date range before exporting",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-7",
+      "summary": "Export multiple conversations into one PDF",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-8",
+      "summary": "Dark mode support",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-9",
+      "summary": "PIN lock for privacy",
+      "reqIds": [],
+      "status": "pending"
+    }
+  ],
+  "gameProjectType": "none",
+  "projectName": "Sansi App Collector",
+  "clarification_mode": "instant",
+  "clarification_rounds": 0
+}

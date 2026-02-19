@@ -1,0 +1,280 @@
+{
+  "kind": "implementation_plan",
+  "version": "1.0",
+  "title": "Sansi App Collector - Frontend Implementation Plan",
+  "requirements": [
+    {
+      "id": "REQ-4",
+      "summary": "Create conversation input interface where users can manually add messages and switch between conversations",
+      "acceptanceCriteria": [
+        "Users can create new conversations with a conversation name",
+        "Users can add individual messages to a conversation with sender, text, and timestamp fields",
+        "Users can view a list of all saved conversations",
+        "Users can switch between different conversations to view or edit them",
+        "All conversation data persists in the backend"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/components/ConversationList.tsx",
+          "operation": "create",
+          "description": "Create a component displaying all saved conversations in a sidebar layout. Include a button to create new conversations with a name input dialog. Allow users to select and switch between conversations. Use the authorization component to ensure only authenticated users can access this feature. Verify the component's usage instructions before implementing."
+        },
+        {
+          "path": "frontend/src/components/MessageInput.tsx",
+          "operation": "create",
+          "description": "Create a form component for adding messages with fields for sender name, message text, and timestamp (with date-time picker). Include submit button that calls backend addMessage capability. Validate inputs before submission and show error feedback."
+        },
+        {
+          "path": "frontend/src/hooks/useConversations.ts",
+          "operation": "create",
+          "description": "Create React Query hook wrapping backend getConversations and addConversation capabilities. Include proper query invalidation on mutation and loading states. Use the authorization component's authentication flow to ensure users are logged in."
+        },
+        {
+          "path": "frontend/src/hooks/useMessages.ts",
+          "operation": "create",
+          "description": "Create React Query hook wrapping backend getMessages and addMessage capabilities for a specific conversation. Include mutation hooks with optimistic updates and error handling."
+        },
+        {
+          "path": "frontend/src/pages/ConversationManager.tsx",
+          "operation": "create",
+          "description": "Create main page component combining ConversationList and MessageInput. Manage selected conversation state and coordinate data flow between components. Include loading states and empty state messaging."
+        }
+      ]
+    },
+    {
+      "id": "REQ-5",
+      "summary": "Display conversation messages chronologically with timestamps in a chat-like interface",
+      "acceptanceCriteria": [
+        "Messages appear in chronological order (oldest to newest)",
+        "Each message shows sender name, message text, and timestamp",
+        "Messages are styled in a chat bubble layout similar to messaging apps",
+        "The conversation view scrolls smoothly with proper spacing"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/components/MessageBubble.tsx",
+          "operation": "create",
+          "description": "Create message bubble component displaying sender name, message text, and formatted timestamp. Style with rounded corners, appropriate padding, and alternating alignment. Use existing OKLCH color system for bubble backgrounds and text colors that work in both light and dark modes."
+        },
+        {
+          "path": "frontend/src/components/MessageList.tsx",
+          "operation": "create",
+          "description": "Create scrollable container component that renders messages in chronological order using MessageBubble. Implement auto-scroll to latest message on new additions. Include smooth scrolling behavior and appropriate spacing between messages."
+        },
+        {
+          "path": "frontend/src/pages/ConversationManager.tsx",
+          "operation": "modify",
+          "description": "Integrate MessageList component into the conversation view area, displaying messages for the currently selected conversation. Pass filtered or searched messages to MessageList for rendering."
+        }
+      ]
+    },
+    {
+      "id": "REQ-6",
+      "summary": "Implement PDF export functionality that generates a well-formatted PDF document with chat-style layout",
+      "acceptanceCriteria": [
+        "Users can trigger PDF export with a dedicated button",
+        "Generated PDF includes conversation name as title",
+        "PDF shows date range of the conversation",
+        "Messages in PDF maintain chronological order with sender names and timestamps",
+        "PDF layout resembles a chat interface with proper formatting",
+        "PDF can be downloaded to the user's device"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/utils/pdfGenerator.ts",
+          "operation": "create",
+          "description": "Create utility function using a client-side PDF library (e.g., jspdf or pdfmake) to generate PDF from conversation data. Format messages in chat-style layout with conversation title, date range header, and chronological message list with timestamps. Return blob for download."
+        },
+        {
+          "path": "frontend/src/components/ExportButton.tsx",
+          "operation": "create",
+          "description": "Create button component that triggers PDF generation and download. Show loading state during generation. Handle errors gracefully with user feedback. Accept conversation data and optional date range as props."
+        },
+        {
+          "path": "frontend/src/pages/ConversationManager.tsx",
+          "operation": "modify",
+          "description": "Add ExportButton to the conversation toolbar area, passing current conversation data for single conversation export. Position prominently near other conversation actions."
+        }
+      ]
+    },
+    {
+      "id": "REQ-7",
+      "summary": "Add a search feature that allows users to filter messages within a conversation by text content",
+      "acceptanceCriteria": [
+        "Search input field is prominently displayed above the message list",
+        "Search filters messages in real-time as user types",
+        "Matching text is highlighted in the message bubbles",
+        "Search is case-insensitive",
+        "Clear button resets the search filter"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/components/MessageSearch.tsx",
+          "operation": "create",
+          "description": "Create search input component with clear button. Implement debounced onChange handler to optimize performance. Use controlled input with state management for search query. Style consistently with existing form inputs."
+        },
+        {
+          "path": "frontend/src/components/MessageBubble.tsx",
+          "operation": "modify",
+          "description": "Add optional searchTerm prop and implement text highlighting logic. Wrap matching text segments in highlighted spans using accent color from OKLCH theme. Ensure highlighting works in both light and dark modes."
+        },
+        {
+          "path": "frontend/src/pages/ConversationManager.tsx",
+          "operation": "modify",
+          "description": "Add MessageSearch component above MessageList. Implement client-side filtering logic using case-insensitive text matching. Pass filtered messages and search term to MessageList and MessageBubble components."
+        }
+      ]
+    },
+    {
+      "id": "REQ-8",
+      "summary": "Implement date range selection for PDF export",
+      "acceptanceCriteria": [
+        "Date range picker appears when user initiates PDF export",
+        "Users can select both start date and end date",
+        "Only messages within the selected range are included in the PDF",
+        "Date range is displayed in the exported PDF header",
+        "Default range includes all messages if no selection is made"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/components/DateRangePicker.tsx",
+          "operation": "create",
+          "description": "Create date range picker component with start and end date inputs using HTML date input or a date picker library. Include validation to ensure end date is after start date. Provide reset option to clear date range."
+        },
+        {
+          "path": "frontend/src/components/ExportButton.tsx",
+          "operation": "modify",
+          "description": "Add modal or dropdown that appears on export button click, containing DateRangePicker. Filter messages by selected date range before passing to pdfGenerator. Show date range in confirmation message before export."
+        },
+        {
+          "path": "frontend/src/utils/pdfGenerator.ts",
+          "operation": "modify",
+          "description": "Update PDF generation function to accept optional date range parameters. Include selected date range in PDF header. Filter messages by timestamp within the range if provided, otherwise include all messages."
+        }
+      ]
+    },
+    {
+      "id": "REQ-9",
+      "summary": "Enable exporting multiple conversations into a single PDF document",
+      "acceptanceCriteria": [
+        "Users can select multiple conversations from a checklist",
+        "Export button generates a single PDF containing all selected conversations",
+        "Each conversation section in the PDF starts with its name as a heading",
+        "Conversations are separated by clear visual dividers",
+        "PDF includes a table of contents or index of included conversations"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/components/MultiConversationExport.tsx",
+          "operation": "create",
+          "description": "Create modal or dialog component with checkbox list of all conversations. Include select all/none controls. Add export button that triggers multi-conversation PDF generation. Show progress indicator during generation."
+        },
+        {
+          "path": "frontend/src/utils/pdfGenerator.ts",
+          "operation": "modify",
+          "description": "Add function to generate multi-conversation PDF. Include table of contents with page numbers at the beginning. Separate each conversation with section headings and visual dividers. Ensure proper page breaks and formatting consistency."
+        },
+        {
+          "path": "frontend/src/pages/ConversationManager.tsx",
+          "operation": "modify",
+          "description": "Add button to trigger MultiConversationExport modal. Position in toolbar area alongside single conversation export. Fetch all conversations data when modal opens."
+        }
+      ]
+    },
+    {
+      "id": "REQ-10",
+      "summary": "Implement dark mode support with a toggle switch using the existing OKLCH color system",
+      "acceptanceCriteria": [
+        "Dark mode toggle is accessible in the app header or settings",
+        "Toggle switches between light and dark themes instantly",
+        "Dark theme uses existing dark theme CSS variables from index.css",
+        "User's theme preference persists across sessions",
+        "All UI components and text remain readable in dark mode"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/hooks/useTheme.ts",
+          "operation": "create",
+          "description": "Create custom hook managing theme state with localStorage persistence. Toggle between light and dark modes by setting data-theme attribute on document root. Initialize from localStorage on mount or default to system preference."
+        },
+        {
+          "path": "frontend/src/components/ThemeToggle.tsx",
+          "operation": "create",
+          "description": "Create toggle switch component using useTheme hook. Display sun/moon icons for visual feedback. Style with smooth transition animation. Make accessible with aria labels."
+        },
+        {
+          "path": "frontend/src/components/Header.tsx",
+          "operation": "create",
+          "description": "Create header component containing app title and ThemeToggle. Position toggle in top-right corner. Include LoginButton from authorization component. Style with existing coral accent color and proper spacing."
+        },
+        {
+          "path": "frontend/src/App.tsx",
+          "operation": "modify",
+          "description": "Replace existing header markup with Header component. Ensure dark mode CSS variables from index.css are applied correctly by setting data-theme attribute on root element via useTheme hook."
+        }
+      ]
+    },
+    {
+      "id": "REQ-11",
+      "summary": "Add PIN lock functionality requiring users to set and enter a PIN to access the app",
+      "acceptanceCriteria": [
+        "First-time users are prompted to create a PIN on initial access",
+        "Returning users must enter their PIN to unlock the app",
+        "PIN entry screen appears before main app content",
+        "PIN is stored securely in the backend (hashed)",
+        "Failed PIN attempts show error feedback",
+        "Option to reset PIN is available through Internet Identity authentication"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/components/PinSetup.tsx",
+          "operation": "create",
+          "description": "Create PIN setup component for first-time users. Display numeric input fields for 4-6 digit PIN. Include confirmation input to verify PIN. Call backend setPin capability on submission. Show validation errors for mismatched or invalid PINs."
+        },
+        {
+          "path": "frontend/src/components/PinEntry.tsx",
+          "operation": "create",
+          "description": "Create PIN entry component for returning users. Display numeric input with masked digits. Call backend checkPin capability on submission. Show error message for incorrect PIN attempts. Limit attempts and provide reset option linking to Internet Identity authentication."
+        },
+        {
+          "path": "frontend/src/hooks/usePin.ts",
+          "operation": "create",
+          "description": "Create React Query hooks wrapping backend setPin and checkPin capabilities. Manage PIN verification state in session storage to avoid repeated prompts. Include mutation hooks with loading and error states."
+        },
+        {
+          "path": "frontend/src/App.tsx",
+          "operation": "modify",
+          "description": "Add PIN lock gate before main app content. Show PinSetup for first-time authenticated users. Show PinEntry for returning authenticated users until PIN is verified. Use authorization component's authentication state to determine when to show PIN screens. Only render ConversationManager after successful PIN verification."
+        }
+      ]
+    },
+    {
+      "id": "REQ-12",
+      "summary": "Remove PlatformLimitations and WebAlternatives components and replace with conversation management interface",
+      "acceptanceCriteria": [
+        "PlatformLimitations component is removed from the main App",
+        "WebAlternatives component is removed from the main App",
+        "Main app layout shows conversation management interface instead",
+        "Header and Footer components remain intact",
+        "Minimalist design with white background and coral accent color is preserved"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/App.tsx",
+          "operation": "modify",
+          "description": "Remove imports and usage of PlatformLimitations and WebAlternatives components. Replace with ConversationManager page as main content area. Wrap ConversationManager with authorization guards ensuring users are authenticated and have completed PIN verification. Maintain Header and Footer components. Preserve minimalist layout with white background and coral accents from existing OKLCH color system."
+        },
+        {
+          "path": "frontend/src/components/PlatformLimitations.tsx",
+          "operation": "delete",
+          "description": "Delete PlatformLimitations component as it is no longer needed for the Sansi App Collector functionality."
+        },
+        {
+          "path": "frontend/src/components/WebAlternatives.tsx",
+          "operation": "delete",
+          "description": "Delete WebAlternatives component as it is no longer needed for the Sansi App Collector functionality."
+        }
+      ]
+    }
+  ]
+}
